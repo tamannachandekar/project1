@@ -1,0 +1,43 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+.navbar {
+    background-color: #ffccff;
+    padding: 10px;
+    border: 5px solid #ffccff;
+}
+.navbar a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 15px;
+}
+.content {
+    text-align: center;
+    padding: 50px;
+}
+.icon {
+    font-size: 100px;
+    color: #ff00ff;
+}
+.icon-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+.icon-container {
+    display: inline-block;
+    margin-top: 100%;
+    margin: 0 50px;
+}
+.fas fa-video icon{
+    justify-items: center;
+    align-items: center;
+}

@@ -1,0 +1,148 @@
+*{
+    padding: auto;
+    margin: auto;
+}
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+.navbar {
+    background-color: #ffccff;
+    padding: 10px;
+    border: 5px solid #ffccff;
+}
+.navbar a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 15px;
+}
+a{
+    position: relative;
+    text-decoration: none;
+    padding: 0 10px;
+}
+a:after{
+    content: "";
+    position: absolute;
+    background-color: black;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+}
+a:hover:after{
+    width: 100%;
+}
+
+/* Header Section */
+.header {
+    background-color: violet;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+.notifications {
+    font-size: 14px;
+}
+
+.bell-icon {
+    background-color: #00e5ff;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+/* Dashboard Title */
+.dashboard {
+    text-align: center;
+    margin: 20px;
+}
+
+.date-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date {
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+.arrow {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Time Slot Selector */
+.time-selector {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.time-btn {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.time-btn.active {
+    background-color: #00e5ff;
+    color: white;
+}
+
+/* Appointment Slots */
+.appointments {
+    margin: 20px;
+}
+
+.time-slot {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: white;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.patient-count {
+    background-color: #00e5ff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+/* Menu Section */
+.menu {
+    display: flex;
+    flex-direction: column;
+    margin: left;
+    align-items: left;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.menu-item img {
+    width: 20px;
+    margin-right: 10px;
+}
+
