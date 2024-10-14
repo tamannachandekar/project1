@@ -39,7 +39,7 @@ a:hover:after{
 
 /* Header Section */
 .header {
-    background-color: violet;
+    background-color: palevioletred;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -52,7 +52,7 @@ a:hover:after{
 }
 
 .bell-icon {
-    background-color: #00e5ff;
+    background-color: #ffccff;
     border-radius: 50%;
     padding: 10px;
     font-size: 20px;
@@ -99,7 +99,7 @@ a:hover:after{
 }
 
 .time-btn.active {
-    background-color: #00e5ff;
+    background-color: palevioletred;
     color: white;
 }
 
@@ -118,7 +118,7 @@ a:hover:after{
 }
 
 .patient-count {
-    background-color: #00e5ff;
+    background-color: palevioletred;
     color: white;
     padding: 5px 10px;
     border-radius: 50%;
@@ -127,9 +127,11 @@ a:hover:after{
 /* Menu Section */
 .menu {
     display: flex;
-    flex-direction: column;
-    margin: left;
-    align-items: left;
+    flex-direction: row;
+    width: 100%;
+    margin: 20px 0;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .menu-item {
@@ -144,5 +146,10 @@ a:hover:after{
 .menu-item img {
     width: 20px;
     margin-right: 10px;
+}
+
+.meet img{
+    max-width: 200px;
+    max-height: 200px;
 }
 

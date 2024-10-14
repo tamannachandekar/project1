@@ -1,0 +1,199 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Oct 13, 2024 at 07:00 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `rehab`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `conditions`
+--
+
+CREATE TABLE `conditions` (
+  `condition_id` int(11) NOT NULL,
+  `patient-id` int(11) NOT NULL,
+  `conditions` varchar(30) NOT NULL,
+  `body_part` varchar(30) NOT NULL,
+  `severity` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `consultant`
+--
+
+CREATE TABLE `consultant` (
+  `consultant_id` int(11) NOT NULL,
+  `c_name` varchar(30) NOT NULL,
+  `c_specialization` varchar(30) NOT NULL,
+  `c_phone` varchar(15) NOT NULL,
+  `c_email` text NOT NULL,
+  `certification` varchar(30) NOT NULL,
+  `experience` int(11) NOT NULL,
+  `associated_facility` varchar(50) NOT NULL,
+  `c_gender` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exercise`
+--
+
+CREATE TABLE `exercise` (
+  `exercise_id` int(11) NOT NULL,
+  `conditions` varchar(30) NOT NULL,
+  `e_name` varchar(30) NOT NULL,
+  `e_description` varchar(250) NOT NULL,
+  `video_link` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `exercise`
+--
+
+INSERT INTO `exercise` (`exercise_id`, `conditions`, `e_name`, `e_description`, `video_link`) VALUES
+(1, 'hand pain', 'hand exercise ', 'physical therapist Barbara leads viewers through a series of hand and wrist exercises designed for stroke patients who can perform rehabilitation exercises at home. The video is suitable for all fitness levels and includes modifications for those wit', 'i0JYsLyJEnE'),
+(2, 'wrist pain', 'wrist exercise', 'Wrist and Forearm Strengthening, Grip Strength, Weight Bearing Modifications, Mobility, Other Modifications, Practical Recommendations ', 'QKAiNAhlXac'),
+(3, 'neck pain', 'neck exercise', 'Simple exercises you can perform to get rid of #Neck_Pain due to prolonged repetitive activity like sitting on a computer or laptop. You can perform these exercises at the ease of your home or even while at work', 'RuHEJs8Dibk'),
+(4, 'shoulder burcities', 'shoulder  exercise', '4 exercises that can help reduce shoulder pain due to subacromial bursitis and/or tendinopathy of the supraspinatus (rotator cuff) or biceps tendons. All three of these structures are located in the subacromial space and can become irritated with ove', '432yWPJQ-is'),
+(5, 'ankle sprain', 'ankle exercise', 'inversion ankle sprains are one of the most common orthopedic conditions and can lead to long-term impairments including ongoing pain, stiffness and gait abnormalities in as many as 72% of individuals. Furthermore, nearly 80% of those individuals who', 'W9lT3gfehC0'),
+(6, 'cardiac rehabilitation ', 'heart exercise', 'Exercises to aid cardiac rehabilitation from East Cheshire NHS TExercises to aid cardiac rehabilitation from East Cheshire NHS Trust\'s Cardiac Rehab Team. PLEASE NOTE: If you have any doubts over whether these exercises are appropriate for you to per', 'O5YX5xg8Seg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient`
+--
+
+CREATE TABLE `patient` (
+  `patient_id` int(11) NOT NULL,
+  `p_name` varchar(30) NOT NULL,
+  `p_dob` date NOT NULL,
+  `p_phone` varchar(15) NOT NULL,
+  `p_gender` varchar(15) NOT NULL,
+  `p_occupation` varchar(30) DEFAULT NULL,
+  `p_email` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `therapy`
+--
+
+CREATE TABLE `therapy` (
+  `appointment_id` int(11) NOT NULL,
+  `patient-id` int(11) NOT NULL,
+  `consultant_id` int(11) NOT NULL,
+  `condition_id` int(11) NOT NULL,
+  `exercise_id` int(11) NOT NULL,
+  `description` varchar(150) NOT NULL,
+  `conditions` varchar(30) NOT NULL,
+  `start_date` date NOT NULL DEFAULT current_timestamp(),
+  `end_date` date NOT NULL,
+  `video_recomendation` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `conditions`
+--
+ALTER TABLE `conditions`
+  ADD PRIMARY KEY (`condition_id`),
+  ADD KEY `patient_id_fk` (`patient-id`);
+
+--
+-- Indexes for table `consultant`
+--
+ALTER TABLE `consultant`
+  ADD PRIMARY KEY (`consultant_id`);
+
+--
+-- Indexes for table `exercise`
+--
+ALTER TABLE `exercise`
+  ADD PRIMARY KEY (`exercise_id`);
+
+--
+-- Indexes for table `patient`
+--
+ALTER TABLE `patient`
+  ADD PRIMARY KEY (`patient_id`);
+
+--
+-- Indexes for table `therapy`
+--
+ALTER TABLE `therapy`
+  ADD PRIMARY KEY (`appointment_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `conditions`
+--
+ALTER TABLE `conditions`
+  MODIFY `condition_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `consultant`
+--
+ALTER TABLE `consultant`
+  MODIFY `consultant_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `exercise`
+--
+ALTER TABLE `exercise`
+  MODIFY `exercise_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `patient`
+--
+ALTER TABLE `patient`
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `therapy`
+--
+ALTER TABLE `therapy`
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `conditions`
+--
+ALTER TABLE `conditions`
+  ADD CONSTRAINT `patient_id_fk` FOREIGN KEY (`patient-id`) REFERENCES `conditions` (`condition_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
