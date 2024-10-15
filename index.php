@@ -1,3 +1,7 @@
+<?php
+include("connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,23 +23,23 @@
                         <li><a href="#">ABOUT</a></li>
                         <li><a href="#">SERVICE</a></li>
                         <li><a href="#">CONTACT</a></li>
-                        <li><a href="./index.html">SIGN.IN</a></li>
+                        <li><a href="./index.php">SIGN.IN</a></li>
                     </ul>
                 </div>
         </div>
         <div class="content">
             <div class="form">
                 <h2>Sign Up</h2>
-                <form action="">
+                <form action="indexdata.php" method="post">
                     <div class="inputBox">
                     <input type="text" name="name" placeholder="Enter your name">
                     <input type="email" name="email" placeholder="Enter your email">
                     <input type="password" name="password" placeholder="Enter your password">
                     </div>
                     <div class="inputBox2">
-                    <select name="level" id="">
+                    <select name="level" id="" name="usertype">
                     <option value="1">Consultant</option>
-                    <option value="">Paitent</option>
+                    <option value="2">Paitent</option>
                     </select>
                     </div>
 
