@@ -8,8 +8,8 @@
     </head>
     <body>
         <div class="navbar">
-            <a href="./admin.html">Dashboard</a>
-            <a href="./appointment.html">Appointment request</a>
+            <a href="./admin.php">Dashboard</a>
+            <a href="./appointment.php">Appointment request</a>
             <a href="./patient.html">Patient</a>
             <a href="#">Profile</a>
         </div>

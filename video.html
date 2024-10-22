@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6-Week Wrist Pain Rehab Program</title>
+    <style>
+        
+        body {
+            background-color: #f8f0f8; 
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            overflow-y: scroll; 
+        }
+
+        
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        
+        h1 {
+            color: #b23a80; 
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fce4ec; 
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        iframe {
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 315px; 
+        }
+
+        
+        p {
+            font-size: 18px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .schedule {
+            font-size: 16px;
+            color: #333;
+        }
+
+        
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background-color: #b23a80;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a72e70;
+        }
+
+        
+        .progress-container {
+            width: 100%;
+            background: #e0e0e0;
+            border-radius: 25px;
+            margin: 20px 0;
+            height: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #b23a80; 
+            width: 0%;
+            border-radius: 25px;
+            transition: width 0.5s; 
+        }
+
+        
+        #reminder {
+            margin-top: 20px;
+            font-size: 16px;
+            padding: 5px;
+            width: 90%;
+            border: 1px solid #b23a80;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>6-Week Wrist Pain Rehab</h1>
+
+        <!-- Week Instructions -->
+        <div class="section">
+            <h2>Current Week: <span id="currentWeek">1</span></h2>
+            <p>Follow the rehab plan for week <span id="currentWeekInstruction">1</span>. Make sure to do these exercises consistently.</p>
+        </div>
+
+        <!-- Video embed with POST form -->
+        <div class="section">
+            <form id="videoForm" method="POST" action="your-action-url-here"> <!-- Set your action URL -->
+                <input type="hidden" id="videoUrl" name="videoUrl" value="https://www.youtube.com/embed/bOXI-wxepmI?si=44X-N9ShdxcuGkry">
+                <iframe id="rehabVideo" 
+                    src="https://www.youtube.com/embed/bOXI-wxepmI?si=44X-N9ShdxcuGkry" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                </iframe>
+                <button type="submit">Submit Video</button> <!-- Submit button to send POST request -->
+            </form>
+        </div>
+
+        <!-- Description -->
+        <div class="section">
+            <p id="weekDescription">This wrist pain rehab video provides essential exercises to relieve and strengthen your wrists. The program is designed to be followed over 6 weeks with increasing intensity. Stay consistent!</p>
+        </div>
+
+        <!-- Suggested Schedule -->
+        <div class="section schedule">
+            <strong>Suggested Schedule:</strong>
+            <p>Perform these exercises 3 to 4 times a day:</p>
+            <ul>
+                <li>Morning: 10:30 AM</li>
+                <li>Afternoon: 2:30 PM</li>
+                <li>Evening: 6:00 PM</li>
+                <li>Night: 9:00 PM (optional)</li>
+            </ul>
+        </div>
+
+        <!-- Progress Bars -->
+        <div class="section">
+            <strong>Progress:</strong>
+            <div class="progress-container">
+                <div id="dailyProgress" class="progress-bar"></div>
+            </div>
+            <p id="dailyProgressText">Daily Progress: 0%</p>
+            <div class="progress-container">
+                <div id="weeklyProgress" class="progress-bar"></div>
+            </div>
+            <p id="weeklyProgressText">Weekly Progress: 0%</p>
+            <div class="progress-container">
+                <div id="overallProgress" class="progress-bar"></div>
+            </div>
+            <p id="overallProgressText">Overall Progress: 0%</p>
+        </div>
+
+        <!-- Controls for Start and Stop -->
+        <div class="controls">
+            <button onclick="startVideo()">Start Video</button>
+            <button onclick="stopVideo()">Stop Video</button>
+            <button onclick="completeDailySchedule()">Complete Daily Schedule</button>
+            <button onclick="nextWeek()">Done</button> <!-- Done button -->
+            <button onclick="goToPreviousWeek()">Back</button> <!-- Back button -->
+            <button onclick="goToFeedback()">Feedback</button> <!-- Feedback button -->
+        </div>
+
+        <!-- Reminder Feature -->
+        <div class="section">
+            <label for="reminder">Set a Reminder for Custom Time (in minutes):</label>
+            <input type="number" id="reminder" min="1" placeholder="Enter minutes">
+            <button onclick="setCustomReminder()">Set Custom Reminder</button>
+            <br><br>
+            <button onclick="setScheduledReminders()">Set Scheduled Reminders</button>
+        </div>
+
+        <!-- Discomfort Contact Box -->
+        <div class="section" style="text-align: center; padding: 10px; background-color: #e0f7fa; border: 1px solid #b2ebf2;">
+            <p>If you experience any discomfort, please contact our <a href="consultant.html" style="color: #b23a80; text-decoration: underline;">consultant</a>.</p>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('rehabVideo');
+        const description = document.getElementById('weekDescription');
+        let currentWeek = 1; // Initialize current week
+        let dailyProgress = 0; // Daily progress
+        let weeklyProgress = 0; // Weekly progress
+        let overallProgress = 0; // Overall progress
+
+        // Function to start the video
+        function startVideo() {
+            video.src += "?autoplay=1"; // Autoplay starts video when the Start button is clicked
+        }
+
+        // Function to stop the video
+        function stopVideo() {
+            video.src = video.src.split('?')[0]; // Reset the video source to stop it
+        }
+
+        // Function to complete the daily schedule
+        function completeDailySchedule() {
+            dailyProgress += 20; // Increment daily progress
+            updateProgressBars(); // Update progress bars
+        }
+
+        // Function to go to the next week
+        function nextWeek() {
+            if (currentWeek < 6) {
+                currentWeek++; // Increment week
+                updateWeekInfo(); // Update week info
+            }
+        }
+
+        // Function to go to the previous week
+        function goToPreviousWeek() {
+            if (currentWeek > 1) {
+                currentWeek--; // Decrement week
+                updateWeekInfo(); // Update week info
+            }
+        }
+
+        // Function to update week information
+        function updateWeekInfo() {
+            document.getElementById('currentWeek').innerText = currentWeek;
+            document.getElementById('currentWeekInstruction').innerText = currentWeek; // Update instruction text
+            description.innerText = `Follow the rehab plan for week ${currentWeek}. Make sure to do these exercises consistently.`; // Update description
+            updateProgressBars(); // Update progress bars
+        }
+
+        // Function to update progress bars
+        function updateProgressBars() {
+            // Update daily progress bar
+            document.getElementById('dailyProgress').style.width = dailyProgress + "%";
+            document.getElementById('dailyProgressText').innerText = "Daily Progress: " + dailyProgress + "%";
+
+            // Update weekly progress
+            weeklyProgress = Math.floor((dailyProgress / 100) * 7); // Assume 7 days per week for example
+            document.getElementById('weeklyProgress').style.width = weeklyProgress + "%";
+            document.getElementById('weeklyProgressText').innerText = "Weekly Progress: " + weeklyProgress + "%";
+
+            // Update overall progress
+            overallProgress = Math.floor((weeklyProgress / 600) * 100); // Example for overall progress
+            document.getElementById('overallProgress').style.width = overallProgress + "%";
+            document.getElementById('overallProgressText').innerText = "Overall Progress: " + overallProgress + "%";
+        }
+
+        // Function to set a custom reminder
+        function setCustomReminder() {
+            const reminderTime = document.getElementById('reminder').value; // Get reminder time
+            alert(`Reminder set for ${reminderTime} minutes!`); // Alert with the reminder
+        }
+
+        // Function to set scheduled reminders
+        function setScheduledReminders() {
+            alert("Scheduled reminders have been set!"); // Alert for scheduled reminders
+        }
+
+        // Function to navigate to the feedback page
+        function goToFeedback() {
+            window.location.href = "feedback.html"; // Redirect to feedback page
+        }
+    </script>
+</body>
+</html>

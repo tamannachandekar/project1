@@ -19,7 +19,7 @@ include("connection.php");
             </div>
                 <div class="menu">
                     <ul>
-                        <li><a href="./home.html">HOME</a></li>
+                        <li><a href="./home.php">HOME</a></li>
                         <li><a href="#">ABOUT</a></li>
                         <li><a href="#">SERVICE</a></li>
                         <li><a href="#">CONTACT</a></li>
@@ -39,7 +39,7 @@ include("connection.php");
                     <div class="inputBox2">
                     <select name="level" id="" name="usertype">
                     <option value="1">Consultant</option>
-                    <option value="2">Paitent</option>
+                    <option value="2">Patient</option>
                     </select>
                     </div>
 

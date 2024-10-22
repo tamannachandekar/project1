@@ -29,24 +29,27 @@
             color: #ff00ff;
         }
         .icon-text {
-            font-size: 24px;
-            align-items: center;
-            height: 300px;
+            font-size: 20px;
+            height: 100px;
             font-weight: bold;
             color: black;
         }
         .icon-container {
-            height: 300px;
+            width: 10px;
+            height: 10px;
             align-items: left;
-            display: inline-block;
-            margin: 0 50px;
         }
-        a{
+        .icon-container1{
+            width: 2000px;
+            height: 40px;
+            align-items: right; 
+        }
+        .meet a{
             position: relative;
             text-decoration: none;
             padding: 0 10px;
         }
-        a:after{
+        .meet a:after{
             content: "";
             position: absolute;
             background-color: black;
@@ -55,14 +58,14 @@
             left: 0;
             bottom: -10px;
         }
-        a:hover:after{
+        .meet a:hover:after{
             width: 100%;
         }
         .meet a img{
             max-width: 200px;
             max-height: 200px;
             display: block;
-            margin: 0px auto;
+            margin: 300px auto;
             align-items: center;
             justify-content: center;
         }
@@ -77,11 +80,13 @@
     </div>
     <div class="content">
         <div class="icon-container">
-            <i class="fas fa-user-circle icon"></i>
-            <div class="icon-text">Welcome user</div>
+            <a href="#">
+                <img src="./css/user.jpg" />
+            <div class="icon-text">Welcome-user</div>
         </div>
-        <div class="icon-container">
-            <i class="fas fa-video icon"></i>
+        <div class="icon-container1">
+            <a href="./video.html">
+                <img src="./css/video.jpg" />
             <div class="icon-text">Allocated Course</div>
         </div>
     </div>

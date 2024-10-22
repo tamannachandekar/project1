@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="./css/Aform.css">
+    <link rel="stylesheet" href="./css/Uform.css">
 </head>
     <body>
         <div class="container">
-            <header>Consultant</header>
+            <header>Patient Registration</header>
 
-            <form action="./connection.php" method="post">
+            <form action="Uformdata.php" method="post">
                 <div class="form first">
                     <div class="details personal">
                         <span class="title">Personal Details</span>
 
                         <div class="fields">
                             <div class="input-field">
-                                <label>Specialization</label>
-                                <input type="text" name="Specialization" placeholder="Enter your Specialization" required>
+                                <label>Date of Birth</label>
+                                <input type="date" name="dob" placeholder="Enter your DOB" required>
                             </div>
 
 
                             <div class="input-field">
                                 <label>Mobile Number</label>
-                                <input type="Number" name="MobileNumber" placeholder="Enter your mobile number" required>
+                                <input type="Number" name="number" placeholder="Enter your mobile number" required>
                             </div>
                             <div class="input-field">
                                 <label>Gender</label>
@@ -29,6 +29,10 @@
                                     <option value="1">Male</option>
                                     <option value="">Female</option>
                                     </select> 
+                            </div>
+                            <div class="input-field">
+                                <label>Occupation</label>
+                                <input type="text" name="occupation" placeholder="Enter your Occupation" required>
                             </div>
                         </div>
                     </div>
@@ -39,21 +43,21 @@
 
                         <div class="fields">
                             <div class="input-field1">
-                                <label>Certification</label>
-                                <input type="text" name="Certification" placeholder="Enter your certification" required>
+                                <label>Condition</label>
+                                <input type="text" name="condition" placeholder="Condition of paitent" required>
                             </div>
                             <div class="input-field1">
-                                <label>Experience</label>
-                                <input type="text" name="Experience" placeholder="Years of evperience" required>
+                                <label>Body-part</label>
+                                <input type="text" name="bpart" placeholder="Which Body-part" required>
                             </div>
                             <div class="input-field1">
-                                <label>Associated Facility</label>
-                                <input type="number" name="AssociatedFacility" placeholder="Associated Facility" required>
+                                <label>Severity</label>
+                                <input type="number" name="severity" placeholder="Percentage of Severity" required>
                             </div>
                         </div>
                         
                         <button class="nextbtn">
-                            <span class="btnText">Next</span>
+                            <span class="btnText" name="nextbtn">Next</span>
                             <i class="uil uil navigator"></i>
                         </button>
                     </div>

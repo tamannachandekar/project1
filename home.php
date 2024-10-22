@@ -16,7 +16,7 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="./home.html">HOME</a></li>
+                    <li><a href="./home.php">HOME</a></li>
                     <li><a href="./about.html">ABOUT</a></li>
                     <li><a href="./service.html">SERVICE</a></li>
                     <li><a href="./contact.html">CONTACT</a></li>

@@ -109,7 +109,7 @@ form .fields .input-field1{
     height: 42px;
     margin: 8px 0;   
 }
-.container form button{
+.container form .nextbtn{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,23 +125,12 @@ form .fields .input-field1{
     transition: all 0.3s linear;
     cursor: pointer;
 }
-.backbtn{
-    transition: all 0.3s linear;
-    cursor: pointer;
-}
-.container form button
-.container form .backbtn{
-    font-size: 16px;
-    font-weight: 400;
-}
-form button:hover{
+.nextbtn:hover{
     background-color: blue;
 }
-form button i,
-form .backbtn i{
-    margin: 0 6px;
-}
-form .buttons{
+form .nextbtn i,
+
+form .nextbtn{
     display: flex;
     align-items: center;
 }
