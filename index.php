@@ -37,7 +37,7 @@ include("connection.php");
                     <input type="password" name="password" placeholder="Enter your password">
                     </div>
                     <div class="inputBox2">
-                    <select name="level" id="" name="usertype">
+                    <select name="level" id="level">
                     <option value="1">Consultant</option>
                     <option value="2">Patient</option>
                     </select>

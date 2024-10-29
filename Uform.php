@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         
-                        <button class="nextbtn">
+                        <button class="nextbtn" name="nextbtn">
                             <span class="btnText" name="nextbtn">Next</span>
                             <i class="uil uil navigator"></i>
                         </button>

@@ -7,20 +7,29 @@ if(isset($_POST["nextbtn"])){
 $c_specialization = $_POST["Specialization"];
 $c_phone = $_POST["MobileNumber"];
 $c_gender = $_POST["level"];
-$certification = $POST["Certification"];
-$experience = $POST["Experience"];
-$associated_facility = $POST["AssociatedFacility"];
+$certification = $_POST["Certification"];
+$experience = $_POST["Experience"];
+$associated_facility = $_POST["AssociatedFacility"];
+
+$result = mysqli_query($conn, "SELECT consultant_id FROM consultant ORDER BY consultant_id DESC LIMIT 1");
+    if ($row = mysqli_fetch_assoc($result)) {
+        $consultant_id = $row['consultant_id'];
     
-$qry = "INSERT INTO consultant (c_specialization,c_phoner,c_gender,certification,experience,associated_facility)
-        VALUES ('$c_specialization','$c_phone','$c_gender','$certification','$experience','$associated_facility')";
-
-
-
+$qry = "UPDATE consultant
+        SET c_specialization = '$c_specialization',
+            c_phone = '$c_phone',
+            c_gender = '$c_gender',
+            certification = '$certification',
+            experience = '$experience',
+            associated_facility = '$associated_facility'
+        WHERE consultant_id = '$consultant_id'"; 
+        
 if (mysqli_query($conn, $qry)) {
-    header("Location: admin.php");
-    exit();
+    echo "\n New record created successfully";
+    header("location:./admin.php");
 }
 else{
-    echo "Error: " . mysqli_error($conn);
+    echo"not inserted ";
+}
 }
 }

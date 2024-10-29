@@ -9,9 +9,10 @@ if(isset($_POST["signButton"])){
 $name = $_POST["name"];
 $email = $_POST["email"];
 $pass = $_POST["password"];
+$role = $_POST["level"];
 
 
-$qry = "INSERT INTO user (name,email,pass) VALUES ('$name','$email','$pass')";
+$qry = "INSERT INTO user (name,email,pass,role) VALUES ('$name','$email','$pass','$role')";
 
 if(mysqli_query($conn,$qry)){
   echo "\n new record created successfully";

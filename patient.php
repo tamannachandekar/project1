@@ -1,3 +1,9 @@
+<?php
+
+include("connection.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +15,9 @@
 <body>
     <header>
         <div class="navbar">
-            <a href="./admin.html">Dashboard</a>
-            <a href="./appointment.html">Appointment request</a>
-            <a href="./patient.html">Patient</a>
+            <a href="./admin.php">Dashboard</a>
+            <a href="./appointment.php">Appointment request</a>
+            <a href="./patient.php">Patient</a>
             <a href="#">Profile</a>
         </div>
     </header>
@@ -20,14 +26,7 @@
             <h1>Patient Profile</h1>
             <div class="patient-info">
                 <img src="./css/paitent.png" alt="Patient Image">
-                <h2>Harpreet Kaur</h2>
-                <p>Corporate</p>
-                <p># HG235478</p>
-                <p>House No. 3121, Sector 15 Chandigarh</p>
-            </div>
-            <div class="actions">
-                <button>Scan QR Code</button>
-                <button>OK</button>
+                <h2 id="name"></h2>
             </div>
             <div class="prescription">
                 <h3>Prescription</h3>
@@ -41,5 +40,10 @@
             </div>
         </section>
     </main>
+
+    <script>
+        let name =  window.location.search.split("=")[1].split("%20").join(" ")
+        document.getElementById('name').innerText = name
+    </script>
 </body>
 </html>

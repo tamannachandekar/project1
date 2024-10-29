@@ -10,7 +10,7 @@
         <div class="navbar">
             <a href="./admin.php">Dashboard</a>
             <a href="./appointment.php">Appointment request</a>
-            <a href="./patient.html">Patient</a>
+            <a href="./patient.php">Patient</a>
             <a href="#">Profile</a>
         </div>
         <div class="header">

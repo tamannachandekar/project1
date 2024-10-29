@@ -1,0 +1,228 @@
+<?php
+session_start();
+include("connection.php"); // Ensure your db.php file connects to the 'loginandsignup' database
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    // Retrieve feedback data from the POST request
+    $q1 = $_POST['feelingBetter'];
+    $q2 = $_POST['painReduction'];
+    $q3 = $_POST['exerciseEnjoyment'];
+    $q4 = $_POST['exerciseDifficulty'];
+    $q5 = $_POST['favoriteExercise'];
+    $q6 = $_POST['exerciseDuration'];
+    $q7 = $_POST['suggestions'];
+    $q8 = $_POST['wouldRecommend'];
+    $q9 = $_POST['additionalComments'];
+    $q10 = $_POST['overallSatisfaction'];
+
+    // Check that required fields are not empty (you can adjust which fields are required)
+    if (!empty($q1) && !empty($q2) && !empty($q3)) {
+        
+        // Prepare the SQL query
+        $query = "INSERT INTO feedback (q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) VALUES ('$q1', '$q2', '$q3', '$q4', '$q5', '$q6', '$q7', '$q8', '$q9', '$q10')";
+        
+        // Execute the query
+        if (mysqli_query($con, $query)) {
+            echo "<script type='text/javascript'>
+                    alert('Thanks for your submission!');
+                    window.location.href = 'video.html';
+                  </script>"; 
+            exit; // Ensure no further output is sent
+        } else {
+            echo "<script type='text/javascript'>alert('Error: Could not submit feedback.');</script>";
+        }
+    } else {
+        echo "<script type='text/javascript'>alert('Please fill in all required fields.');</script>";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        /* Page background and general styling */
+        body {
+            background-color: #f8f0f8; /* Light lavender background */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Main container styling */
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Heading style */
+        h1 {
+            color: #b23a80; /* Darker pink color */
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Section styling */
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fce4ec; /* Light pink background */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Input styling */
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #b23a80;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #b23a80;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            display: block; /* Center the button */
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #a72e70;
+        }
+
+        /* Discomfort message styling */
+        .discomfort-message {
+            background-color: #ffeef8; /* Light pink background */
+            border: 1px solid #b23a80; /* Border color */
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .discomfort-message a {
+            color: #b23a80; /* Color for the link */
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback Form</h1>
+        <form id="feedbackForm" method="POST" action="">
+            <!-- Question 1 -->
+            <div class="section">
+                <label for="feelingBetter">1. Are you feeling better since starting the rehab program?</label>
+                <select id="feelingBetter" name="feelingBetter" required>
+                    <option value="Not at all">Not at all</option>
+                    <option value="A little">A little</option>
+                    <option value="Somewhat">Somewhat</option>
+                    <option value="Mostly">Mostly</option>
+                    <option value="Very much">Very much</option>
+                </select>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="section">
+                <label for="painReduction">2. Have you noticed a reduction in your wrist pain?</label>
+                <select id="painReduction" name="painReduction" required>
+                    <option value="No reduction">No reduction</option>
+                    <option value="Slight reduction">Slight reduction</option>
+                    <option value="Moderate reduction">Moderate reduction</option>
+                    <option value="Significant reduction">Significant reduction</option>
+                    <option value="Complete relief">Complete relief</option>
+                </select>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="section">
+                <label for="exerciseEnjoyment">3. How much do you enjoy the exercises?</label>
+                <select id="exerciseEnjoyment" name="exerciseEnjoyment" required>
+                    <option value="Not enjoyable">Not enjoyable</option>
+                    <option value="Slightly enjoyable">Slightly enjoyable</option>
+                    <option value="Moderately enjoyable">Moderately enjoyable</option>
+                    <option value="Mostly enjoyable">Mostly enjoyable</option>
+                    <option value="Very enjoyable">Very enjoyable</option>
+                </select>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="section">
+                <label for="exerciseDifficulty">4. How difficult do you find the exercises?</label>
+                <select id="exerciseDifficulty" name="exerciseDifficulty" required>
+                    <option value="Very easy">Very easy</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="Difficult">Difficult</option>
+                    <option value="Very difficult">Very difficult</option>
+                </select>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="section">
+                <label for="favoriteExercise">5. What has been your favorite exercise so far?</label>
+                <input type="text" id="favoriteExercise" name="favoriteExercise" placeholder="Enter your answer here...">
+            </div>
+
+            <!-- Question 6 -->
+            <div class="section">
+                <label for="exerciseDuration">6. How long are you able to commit to the exercises each day?</label>
+                <input type="text" id="exerciseDuration" name="exerciseDuration" placeholder="Enter time in minutes...">
+            </div>
+
+            <!-- Question 7 -->
+            <div class="section">
+                <label for="suggestions">7. Do you have any suggestions for improvement?</label>
+                <textarea id="suggestions" name="suggestions" rows="4" placeholder="Your suggestions..."></textarea>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="section">
+                <label for="wouldRecommend">8. Would you recommend this program to others?</label>
+                <select id="wouldRecommend" name="wouldRecommend" required>
+                    <option value="Definitely not">Definitely not</option>
+                    <option value="Probably not">Probably not</option>
+                    <option value="Might or might not">Might or might not</option>
+                    <option value="Probably would">Probably would</option>
+                    <option value="Definitely would">Definitely would</option>
+                </select>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="section">
+                <label for="additionalComments">9. Any additional comments?</label>
+                <textarea id="additionalComments" name="additionalComments" rows="4" placeholder="Your comments..."></textarea>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="section">
+                <label for="overallSatisfaction">10. How would you rate your overall satisfaction with the program?</label>
+                <input type="text" id="overallSatisfaction" name="overallSatisfaction" placeholder="Enter satisfaction level...">
+            </div>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+        <div class="discomfort-message">
+            <p>If you experience any discomfort or pain during the exercises, please <a href="contact.php">contact us</a> immediately.</p>
+        </div>
+    </div>
+</body>
+</html>
